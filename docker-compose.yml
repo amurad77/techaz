@@ -36,8 +36,8 @@ services:
         
         volumes:
             - .:/code/
-            - ./static/:/code/static
-            - ./media/:/code/media 
+            # - ./static/:/code/static
+            # - ./media/:/code/media 
         depends_on:
             - "postgres"
         env_file: .env
