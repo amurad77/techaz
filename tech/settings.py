@@ -28,7 +28,7 @@ SECRET_KEY = ')brx##30=up6zlagvyy_wg64b=ws4y1a$7f7mu5juprp_@anx='
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False if os.environ.get('DEBUG') else True
 # PROD = not DEBUG
-DEBUG = True
+DEBUG = False
 PROD = True
 
 ALLOWED_HOSTS = ['*']
@@ -194,11 +194,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static')
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 
 
