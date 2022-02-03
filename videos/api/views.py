@@ -13,3 +13,13 @@
     
 #     def get_serializer_class(self):
 #         return self.serializers.get(self.action, self.serializers.get('default'))
+
+
+from videos.models import Video
+from videos.api.serializers import VideoSerializers
+from rest_framework.generics import RetrieveAPIView
+
+class VideoDetailAPIView(RetrieveAPIView):
+    queryset = Video.objects.all()
+    serializer_class = VideoSerializers
+    lookup_field = "slug"

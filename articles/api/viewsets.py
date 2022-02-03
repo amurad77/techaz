@@ -7,7 +7,7 @@ from rest_framework import status
 
 from rest_framework.decorators import action, api_view, permission_classes
 from drf_multiple_model.views import FlatMultipleModelAPIView
-from .paginations import LimitPagination
+from .paginations import LimitPagination, LimitPaginationArticles
 
 from ..models import Articles
 from .serializers import ArticleSerializers, ArticleCreateSerializers
@@ -28,7 +28,7 @@ class ArticleViewSets(ModelViewSet):
     queryset = Articles.objects.all()
     serializer_class = ArticleSerializers
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    pagination_class = LimitPagination
+    pagination_class = LimitPaginationArticles
     lookup_field = 'slug'
     extra_kwargs = {
         'url': {'lookup_field': 'slug'}

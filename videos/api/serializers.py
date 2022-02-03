@@ -28,6 +28,7 @@ class VideoSerializers(serializers.ModelSerializer):
     class Meta:
         model = Video
         fields = [
+            'id',
             'owner',
             'tag',
             'title',

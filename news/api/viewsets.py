@@ -37,6 +37,17 @@ class NewsViewSets(ReadOnlyModelViewSet):
         return Response(serializer.data)
 
 
+
+# class NewsViewSets(ReadOnlyModelViewSet):
+#     def get(self, *args, **kwargs):
+#         permission_classes = [permissions.AllowAny,]
+#         queryset = News.objects.filter(is_published=True, pk=kwargs.get('pk'))
+#         serializer_class = NewsSerializers
+#         lookup_field = 'slug'
+#         extra_kwargs = {
+#             'url': {'lookup_field': 'slug'}
+#         }
+
     # def create(self, request):
     #     serializer = NewsCreateSerializer(data=request.data, context={'request': request})
     #     serializer.is_valid(raise_exception=False)

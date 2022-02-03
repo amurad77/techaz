@@ -10,3 +10,11 @@
 
 
 
+from news.models import News
+from news.api.serializers import NewsSerializers
+from rest_framework.generics import RetrieveAPIView
+
+class NewsDetailAPIView(RetrieveAPIView):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializers
+    lookup_field = "slug"

@@ -28,8 +28,8 @@ SECRET_KEY = ')brx##30=up6zlagvyy_wg64b=ws4y1a$7f7mu5juprp_@anx='
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False if os.environ.get('DEBUG') else True
 # PROD = not DEBUG
-DEBUG = True
-PROD = True
+DEBUG = False
+PROD = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -141,6 +141,14 @@ else:
             'HOST': '127.0.0.1',
         }
     }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': str(BASE_DIR / "db.sqlite3"),
+
+#     }
+# }
 
 
 
