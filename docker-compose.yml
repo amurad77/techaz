@@ -1,3 +1,5 @@
+
+  
 version: '3.1'
 
 services: 
@@ -12,7 +14,7 @@ services:
             - ./nginx/conf.d/client_max_body_size.conf:/etc/nginx/conf.d/client_max_body_size.conf:ro
             - ./nginx/proxy.conf/:/etc/nginx/proxy.conf
             - ./static/:/tech/static
-            - ./media/:/tech/media 
+            - ./media/:/tech/media
     postgres:
         image: postgres:9.6.6
         restart: always
@@ -33,7 +35,7 @@ services:
         volumes:
             - .:/code/
             # - ./static/:/code/static
-            # - ./media/:/code/media 
+            # - ./media/:/code/media
         depends_on:
             - "postgres"
         env_file: .env
