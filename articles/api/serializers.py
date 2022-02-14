@@ -50,7 +50,7 @@ class ArticleSerializers(serializers.ModelSerializer):
             'created_at',
             'slug',
             'comments',
-            'types',
+            'type',
         ]
         extra_kwargs = {'tag': {'required': False}}
 
