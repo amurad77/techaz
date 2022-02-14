@@ -1,40 +1,40 @@
-# from rest_framework import permissions
-# from rest_framework.decorators import action
-# from django.shortcuts import get_object_or_404
-# from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
-# from rest_framework.response import Response
-# from rest_framework import status
+from rest_framework import permissions
+from rest_framework.decorators import action
+from django.shortcuts import get_object_or_404
+from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
+from rest_framework.response import Response
+from rest_framework import status
 
-# from .serializers import *
-# from ..models import News
-# from .paginations import LimitPagination
+from .serializers import *
+from ..models import News
+from .paginations import LimitPagination
 
-# from comments.models import Comment
-# from comments.api.serializers import *
+from comments.models import Comment
+from comments.api.serializers import *
 
-# class NewsViewSets(ReadOnlyModelViewSet):
-#     permission_classes = [permissions.AllowAny,]
-#     queryset = News.objects.filter(is_published=True)
-#     serializer_class = NewsSerializers
-#     lookup_field = 'slug'
-#     extra_kwargs = {
-#         'url': {'lookup_field': 'slug'}
-#     }
-#     pagination_class = LimitPagination
+class NewsViewSets(ReadOnlyModelViewSet):
+    permission_classes = [permissions.AllowAny,]
+    queryset = News.objects.filter(is_published=True)
+    serializer_class = NewsSerializers
+    lookup_field = 'slug'
+    extra_kwargs = {
+        'url': {'lookup_field': 'slug'}
+    }
+    pagination_class = LimitPagination
 
-#     def get_queryset(self):
-#         queryset = super().get_queryset()
-#         owner = self.request.GET.get('owner_id')
-#         if owner:
-#             queryset = queryset.filter(owner=owner)
-#         return queryset
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        owner = self.request.GET.get('owner_id')
+        if owner:
+            queryset = queryset.filter(owner=owner)
+        return queryset
     
 
-#     def retrieve(self, request, slug=None):
-#         news = get_object_or_404(News,slug=slug)
-#         news.add_view_count()
-#         serializer = NewsSerializers(news)
-#         return Response(serializer.data)
+    def retrieve(self, request, slug=None):
+        news = get_object_or_404(News,slug=slug)
+        news.add_view_count()
+        serializer = NewsSerializers(news)
+        return Response(serializer.data)
 
 
 
