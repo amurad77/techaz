@@ -114,7 +114,7 @@ class MixDataViewSets(FlatMultipleModelAPIView):
     
     def get_querylist(self):
         querylist = [
-            {'queryset': News.objects.all(), 'serializer_class': NewsSerializers, 'label': 'News'},
+            {'queryset': News.objects.all(), 'serializer_class': NewsSerializers},
             {'queryset': Articles.objects.all(), 'serializer_class': ArticleSerializers, 'label': 'Articles'},
             {'queryset': Video.objects.all(), 'serializer_class': VideoSerializers, 'label': 'Videos'},
         ]
