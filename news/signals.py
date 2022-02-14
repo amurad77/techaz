@@ -8,6 +8,7 @@ from tech.commons import slugify
 
 @receiver(post_save, sender=News)
 def create_product(sender, instance, created,  **kwargs):
-    instance.slug = f'{slugify(instance.title)}-{instance.id}'
-    instance.file_abs_url = f'{settings.SITE_ADDRESS}/api/news/{instance.slug}/'
-    instance.save()
+    if created:
+        instance.slug = f'{slugify(instance.title)}-{instance.id}'
+        instance.file_abs_url = f'{settings.SITE_ADDRESS}/api/news/{instance.slug}/'
+        instance.save()
