@@ -22,6 +22,7 @@ class Video(models.Model):
     views = models.PositiveIntegerField(default=0)
     slug = models.SlugField('Slug', max_length=110, editable=False, default='', unique = True)
     file_abs_url = models.URLField(_("abs url"), default='', max_length=200)
+    types = models.CharField("Type", max_length=30, editable=False, default='videos')
 
 
     # moderations

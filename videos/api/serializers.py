@@ -40,6 +40,7 @@ class VideoSerializers(serializers.ModelSerializer):
             'views',
             'comments',
             'slug',
+            'types',
             'file_abs_url',
             'created_at',
             ]
