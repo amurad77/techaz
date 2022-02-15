@@ -36,7 +36,7 @@ class News(models.Model):
         ordering = ('-created_at',)
 
     def add_view_count(self):
-        self.views +=4
+        self.views +=3
         self.save()
         return True
 
