@@ -1,1 +1,2 @@
 # tech.az
+# fuck.you
