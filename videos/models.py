@@ -70,6 +70,3 @@ class VideosImage(models.Model):
         verbose_name = 'Video Şəkili'
         verbose_name_plural = 'Videonun Şəkilləri'
         ordering = ('-created_at',)
-
-
-
