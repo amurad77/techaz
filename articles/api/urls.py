@@ -1,13 +1,14 @@
 from django.urls import path
 from django.conf.urls import url
 from .routers import router
-from .viewsets import ArticleViewSets, MixDataViewSets
+from .viewsets import ArticleViewSets, MixDataViewSets, AllData
 from .views import *
 from articles.api.views import ArticlesDetailAPIView
 
 
 
 urlpatterns = [
+    path('alldata/', AllData.as_view()),
     path('mixdata/', MixDataViewSets.as_view()),
     url(r'articles/(?P<pk>\d+)/', view=ArticlesDetailAPIView.as_view()),
     # path('articles/(?P<pk>)/comments/', view=ArticleViewSets.as_view({'get':'comments', 'post':'comments'})),

@@ -119,3 +119,17 @@ class MixDataViewSets(FlatMultipleModelAPIView):
             {'queryset': Video.objects.all(), 'serializer_class': VideoSerializers, 'label': 'videos'},
         ]
         return querylist
+
+
+class AllData(FlatMultipleModelAPIView):
+    # pagination_class = LimitPagination
+    sorting_fields = ['-created_at']
+    lookup_field = 'slug'
+    
+    def get_querylist(self):
+        querylist = [
+            {'queryset': News.objects.all(), 'serializer_class': NewsSerializers, 'label': 'news'},
+            {'queryset': Articles.objects.all(), 'serializer_class': ArticleSerializers, 'label': 'articles'},
+            {'queryset': Video.objects.all(), 'serializer_class': VideoSerializers, 'label': 'videos'},
+        ]
+        return querylist
