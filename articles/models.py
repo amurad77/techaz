@@ -7,6 +7,9 @@ from main.models import Tag
 
 from tech.commons import slugify
 
+from tinymce import model as tinymce_models
+
+
 User = get_user_model()
 
 # Create your models here.
@@ -19,7 +22,9 @@ class Articles(models.Model):
     #information
     title = models.CharField("Basliq", max_length=256,)
     short_desc = models.CharField("Qisa mezmun", max_length=256)
-    content = models.TextField('Mezmun')
+
+    content = tinymce_models.HTMLField('Mezmun')
+
     image = models.ImageField("Şəkil", upload_to='article_images', null=True, blank=True)
     cover_image = models.ImageField("Qapak örtüyü", upload_to='aritcle_cover_images', null=True, blank=True)
     views = models.PositiveIntegerField(default=3, blank=True, null=True)

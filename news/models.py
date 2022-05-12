@@ -6,6 +6,8 @@ from main.models import Tag
 
 from tech.commons import slugify
 
+from tinymce import model as tinymce_models
+
 User = get_user_model()
 
 
@@ -17,7 +19,9 @@ class News(models.Model):
     #information
     title = models.CharField("Basliq", max_length=256,)
     short_desc = models.CharField("Qısa Məzmun", max_length=256)
-    content = models.TextField('Məzmun')
+
+    content = tinymce_models.HTMLField('Məzmun')
+
     cover_image = models.ImageField("Qapak örtüyü", upload_to='cover_images', null=True, blank=True)
     video_link = models.URLField(max_length=300, blank=True, null=True)
     views = models.PositiveIntegerField(default=0)

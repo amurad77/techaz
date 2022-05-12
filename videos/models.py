@@ -5,6 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from tech.commons import slugify
 
+from tinymce import model as tinymce_models
+
+
 User = get_user_model()
 
 
@@ -16,7 +19,9 @@ class Video(models.Model):
     #information
     title = models.CharField("Basliq", max_length=256,)
     short_desc = models.CharField("Qisa mezmun", max_length=256)
-    content = models.TextField('Mezmun')
+
+    content = tinymce_models.HTMLField('Mezmun')
+
     cover_image = models.ImageField("Cover Image", upload_to='cover_images')
     video_link = models.URLField(max_length=300)
     views = models.PositiveIntegerField(default=0)

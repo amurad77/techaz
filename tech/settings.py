@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'jet.dashboard',
     'jet',
+    'tinymce',
     'account.apps.AccountConfig',
     'main.apps.MainConfig',
     'articles.apps.ArticlesConfig',

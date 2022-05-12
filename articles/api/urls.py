@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls import url
 from .routers import router
 from .viewsets import ArticleViewSets, MixDataViewSets, AllData
@@ -8,6 +8,9 @@ from articles.api.views import ArticlesDetailAPIView
 
 
 urlpatterns = [
+    path('tinymce/', include('tinymce.urls')),
+
+
     path('alldata/', AllData.as_view()),
     path('mixdata/', MixDataViewSets.as_view()),
     url(r'articles/(?P<pk>\d+)/', view=ArticlesDetailAPIView.as_view()),
