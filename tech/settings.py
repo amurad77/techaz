@@ -27,7 +27,7 @@ SECRET_KEY = ')brx##30=up6zlagvyy_wg64b=ws4y1a$7f7mu5juprp_@anx='
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = False if os.environ.get('DEBUG') else True
 # PROD = not DEBUG
-DEBUG = False
+DEBUG = False 
 PROD = not DEBUG
 
 ALLOWED_HOSTS = ['*']
@@ -122,11 +122,11 @@ if PROD:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.environ.get('POSTGRES_DB'),
-            'USER': os.environ.get('POSTGRES_USER'),
-            'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-            'HOST': os.environ.get('POSTGRES_HOST'),
-            'PORT': os.environ.get('POSTGRES_PORT')
+            'NAME': os.environ.get('POSTGRES_DB', 'tech_db_name'),
+            'USER': os.environ.get('POSTGRES_USER', 'tech_db_user'),
+            'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'f26b8ab553cfd4767216dbc7be7702fcad1b0115a6347e87e'),
+            'HOST': os.environ.get('POSTGRES_HOST', 'postgres'),
+            'PORT': os.environ.get('POSTGRES_PORT', '5432')
         }
     }
 else:
@@ -194,11 +194,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+if PROD:
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+else:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static")
+    ]
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 JET_THEMES = [
