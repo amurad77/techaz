@@ -7,7 +7,7 @@ from main.models import Tag
 
 from tech.commons import slugify
 
-from tinymce import model as tinymce_models
+from tinymce import models as tinymce_models
 
 
 User = get_user_model()

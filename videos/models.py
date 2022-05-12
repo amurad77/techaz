@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from tech.commons import slugify
 
-from tinymce import model as tinymce_models
+from tinymce import models as tinymce_models
 
 
 User = get_user_model()
