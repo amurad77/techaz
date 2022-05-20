@@ -1,7 +1,7 @@
 from django.urls import path, include, re_path
 from django.conf.urls import url
 from .routers import router
-from .viewsets import ArticleViewSets, MixDataViewSets, AllData
+from .viewsets import ArticleViewSets, MixDataViewSets, AllData, SearchViews
 from .views import *
 from articles.api.views import ArticlesDetailAPIView
 
@@ -10,6 +10,8 @@ from articles.api.views import ArticlesDetailAPIView
 urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
 
+
+    path('search/', SearchViews.as_view()),
 
     path('alldata/', AllData.as_view()),
     path('mixdata/', MixDataViewSets.as_view()),

@@ -6,8 +6,8 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from rest_framework.decorators import action, api_view, permission_classes
-from drf_multiple_model.views import FlatMultipleModelAPIView
-from .paginations import LimitPagination, LimitPaginationArticles
+from drf_multiple_model.views import FlatMultipleModelAPIView, ObjectMultipleModelAPIView
+from .paginations import LimitPagination, LimitPaginationArticles, LimitPaginationSearch
 
 from ..models import Articles
 from .serializers import ArticleSerializers, ArticleCreateSerializers
@@ -21,7 +21,26 @@ from news.api.serializers import NewsSerializers
 from videos.models import Video
 from videos.api.serializers import VideoSerializers
 
+from rest_framework.filters import SearchFilter
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics
 
+ 
+class SearchViews(ObjectMultipleModelAPIView):
+    """
+    GET
+    """
+    querylist = [
+            {'queryset': News.objects.all(), 'serializer_class': NewsSerializers, 'label': 'news'},
+            {'queryset': Articles.objects.all(), 'serializer_class': ArticleSerializers, 'label': 'articles'},
+            {'queryset': Video.objects.all(), 'serializer_class': VideoSerializers, 'label': 'videos'},
+        ]
+    pagination_class = LimitPaginationSearch
+    queryset = News.objects.all()
+    serializer_class = NewsSerializers
+    filter_backends = (SearchFilter, DjangoFilterBackend)
+    # filter_fields = ('id', 'title')
+    search_fields = ('title',)
 
 
 class ArticleViewSets(ModelViewSet):

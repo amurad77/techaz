@@ -7,3 +7,6 @@ class LimitPagination(MultipleModelLimitOffsetPagination):
 
 class LimitPaginationArticles(MultipleModelLimitOffsetPagination):
     default_limit = 9
+
+class LimitPaginationSearch(MultipleModelLimitOffsetPagination):
+    default_limit = 15
