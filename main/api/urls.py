@@ -5,7 +5,5 @@ from .routers import router
 
 urlpatterns = [
     path('join/', JoinAPIView.as_view(), name='join'),
-
- 
 ]
 urlpatterns += router.urls
