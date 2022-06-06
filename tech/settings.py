@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = ')brx##30=up6zlagvyy_wg64b=ws4y1a$7f7mu5juprp_@anx='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False if os.environ.get('DEBUG') else False
+DEBUG = True if os.environ.get('DEBUG') else False
 # PROD = not DEBUG
 # DEBUG = False 
 PROD = not DEBUG
