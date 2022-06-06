@@ -47,27 +47,4 @@ class Articles(models.Model):
         self.save()
         return True
 
-    # def save(self, *args, **kwargs):
-    #     super(Articles, self).save(*args, **kwargs)    
-    #     self.slug = f'{slugify(self.title)}-{self.id}'
-    #     super(Articles, self).save(*args, **kwargs)
-    
 
-
-# class ArticleImage(models.Model):
-
-#     # relation's
-#     articles = models.ForeignKey(Articles, related_name='articles_images', on_delete=models.CASCADE, blank=True, null=True)
-
-#     # informations
-#     image = models.ImageField(_("Image"), upload_to='articles_images')
-
-#     # moderations
-#     is_published = models.BooleanField('is published', default=True)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-
-#     class Meta:
-#         verbose_name = 'Məqalə Şəkili'
-#         verbose_name_plural = 'Məqalələrin Şəkilləri'
-#         ordering = ('-created_at',)

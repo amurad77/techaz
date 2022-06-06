@@ -38,3 +38,10 @@ class User(AbstractUser):
     
 
 
+class Config(models.Model):
+    apiKey = models.CharField('apiKey', default = "AIzaSyDV-DLZPcnGX_5aHY9icwvOz2JE12pe-eU", max_length=256)
+    authDomain = models.CharField('authDomain', default = "techaz-bfae3.firebaseapp.com", max_length=256)
+    projectId = models.CharField('projectId', default = "techaz-bfae3", max_length=256)
+    storageBucket = models.CharField('storageBucket', default = "techaz-bfae3.appspot.com", max_length=256)
+    messagingSenderId = models.CharField('messagingSenderId', default = "186177661017", max_length=256)
+    appId = models.CharField('appId', default = "1:186177661017:web:3a90c4487e1af1e3e22948", max_length=256)

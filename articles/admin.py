@@ -19,3 +19,5 @@ class ArticlesAdmin(admin.ModelAdmin):
             'fields': ("owner", "title", "short_desc", "content",  "views", 'tag', "is_published", "cover_image", )
         }),
     )
+
+

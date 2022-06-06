@@ -71,11 +71,6 @@ class ArticleViewSets(ModelViewSet):
         serializer = ArticleSerializers(article)
         return Response(serializer.data)
 
-    # def create(self, request):
-    #     serializer = ArticleCreateSerializers(data=request.data, context={'request': request})
-    #     serializer.is_valid(raise_exception=True) # check all fields is valid before attempting to save
-    #     serializer.save(owner=request.user)
-    #     return Response(serializer.data)
 
 
     @action(detail=False, methods=['POST','GET'])
@@ -141,6 +136,7 @@ class MixDataViewSets(FlatMultipleModelAPIView):
 
 
 class AllData(FlatMultipleModelAPIView):
+
     # pagination_class = LimitPagination
     sorting_fields = ['-created_at']
     lookup_field = 'slug'
@@ -152,3 +148,6 @@ class AllData(FlatMultipleModelAPIView):
             {'queryset': Video.objects.all(), 'serializer_class': VideoSerializers, 'label': 'videos'},
         ]
         return querylist
+
+
+

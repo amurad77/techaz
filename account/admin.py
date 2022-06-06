@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.admin import UserAdmin 
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User, Group
+from .models import Config
 
 User = get_user_model()
 
@@ -25,5 +26,12 @@ class UserAdmin(UserAdmin):
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
     )
 
-admin.site.register(User, UserAdmin)
 
+# @admin.register(Config)
+# class ConfigAdmin(admin.ModelAdmin):
+#     list_display = ("image", 'is_published')
+
+admin.site.register(Config)
+
+
+admin.site.register(User, UserAdmin)

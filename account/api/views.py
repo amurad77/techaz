@@ -1,7 +1,7 @@
 from rest_framework.generics import CreateAPIView
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
-from .serializers import UserSerializer, UserSerializerCreate, ProfileUpdateSerializer
+from .serializers import UserSerializer, UserSerializerCreate, ProfileUpdateSerializer, ConfigSerializer
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.response import Response
 from rest_framework import permissions, status, generics
@@ -11,6 +11,13 @@ from rest_framework import viewsets
 from articles.api.serializers import ArticleSerializers
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from account.utils import CustomSwaggerAutoSchema
+from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
+
+
+# from rest_framework import viewsets
+
+
+from ..models import Config
 
 
 User = get_user_model()
@@ -78,3 +85,15 @@ class UserReadOnlyModelViewSets(viewsets.ReadOnlyModelViewSet):
         if articles:
             return Response(serializer.data)
         return Response({'message': 'Not founded'})
+
+
+
+
+
+class ConfigViewSet(ReadOnlyModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Config.objects.all()
+    serializer_class = ConfigSerializer
+    # permission_classes = [permissions.IsAuthenticated]

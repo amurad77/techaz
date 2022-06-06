@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
+from ..models import Config
 User = get_user_model()
 
 
@@ -129,8 +130,7 @@ class ProfileUpdateSerializer(serializers.ModelSerializer):
 
 
 
-
-
-
-
-
+class ConfigSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Config
+        fields = ['apiKey', 'authDomain', 'projectId', 'storageBucket', 'messagingSenderId', 'appId']

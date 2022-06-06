@@ -1,10 +1,19 @@
 from django.urls import path, include
 from rest_framework.authtoken.views import obtain_auth_token
-from .views import RegisterAPIView, LoginAPI, ProfileAPIView, UserReadOnlyModelViewSets
+from .views import RegisterAPIView, LoginAPI, ProfileAPIView, UserReadOnlyModelViewSets, ConfigViewSet
+from account.api import views
 
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'config', views.ConfigViewSet)
 
 
 urlpatterns = [
+
+    path('config/', view=ConfigViewSet.as_view({'get': 'list'})),
+
+
     path('register/', RegisterAPIView.as_view(), name='register'),
     path('login/', LoginAPI.as_view(), name='login'),
     path('password-reset/', include('django_rest_passwordreset.urls', namespace='password_reset')),
